@@ -12,43 +12,67 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	</head>
 	<body>
 		<Header />
-		<main>
-			<!-- 首屏欢迎区 -->
-			<section class="hero">
+		
+		<!-- 首屏背景区 -->
+		<div class="hero-wrapper">
+			<div class="hero-content">
 				<h1>臻承烟酒行</h1>
 				<p class="subtitle">专注品质 · 传承经典</p>
+				<div class="divider"></div>
 				<p class="description">
-					欢迎来到臻承烟酒行。我们致力于为您提供保真、优质的白酒、红酒、洋酒及精选香烟。
+					我们致力于为您提供保真、优质的白酒、红酒、洋酒及精选香烟。<br>
 					无论是日常品鉴、商务宴请还是佳节送礼，这里都能满足您的需求。
 				</p>
-			</section>
+			</div>
+		</div>
 
+		<main>
 			<!-- 主营业务区 -->
 			<section class="services">
-				<h2>主营业务</h2>
+				<div class="section-header">
+					<h2>主营业务</h2>
+					<p>甄选好物 · 品质保障</p>
+				</div>
+				
 				<div class="service-grid">
 					<div class="service-card">
-						<h3>🍶 中外名酒</h3>
-						<p>茅台、五粮液等高端白酒，原瓶进口红酒，知名品牌洋酒，品类齐全。</p>
+						<div class="icon">🍶</div>
+						<h3>中外名酒</h3>
+						<p>茅台、五粮液等高端白酒，原瓶进口红酒，知名品牌洋酒，品类齐全，满足不同品鉴需求。</p>
 					</div>
 					<div class="service-card">
-						<h3>🚬 正品烟草</h3>
-						<p>各大品牌香烟，保证正品，支持现场验货，让您买得放心。</p>
+						<div class="icon">🚬</div>
+						<h3>正品烟草</h3>
+						<p>各大品牌香烟，保证正品，支持现场验货，让您买得放心，抽得舒心。</p>
 					</div>
 					<div class="service-card">
-						<h3>🎁 礼盒定制</h3>
-						<p>节日礼品搭配，企业采购，为您提供贴心、体面的送礼方案。</p>
+						<div class="icon">🎁</div>
+						<h3>礼盒定制</h3>
+						<p>节日礼品搭配，企业采购，为您提供贴心、体面、独一无二的送礼方案。</p>
 					</div>
 				</div>
 			</section>
 
 			<!-- 联系我们 -->
 			<section class="contact">
-				<h2>联系我们</h2>
+				<div class="section-header">
+					<h2>联系我们</h2>
+					<p>欢迎莅临品鉴</p>
+				</div>
+				
 				<div class="contact-box">
-					<p>📍 <strong>门店地址：</strong> 盘锦市双台子区建设街繁荣小区</p>
-					<p>📞 <strong>联系电话：</strong> 130 8222 5444</p>
-					<p>🕒 <strong>营业时间：</strong> 09:00 - 22:00（全年无休）</p>
+					<div class="contact-item">
+						<span class="label">📍 门店地址</span>
+						<span class="value">盘锦市双台子区建设街繁荣小区</span>
+					</div>
+					<div class="contact-item">
+						<span class="label">📞 联系电话</span>
+						<span class="value"><a href="tel:13082225444">130 8222 5444</a></span>
+					</div>
+					<div class="contact-item">
+						<span class="label">🕒 营业时间</span>
+						<span class="value">09:00 - 22:00 (全年无休)</span>
+					</div>
 				</div>
 			</section>
 		</main>
@@ -57,120 +81,198 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 </html>
 
 <style>
-	/* 页面主体布局 */
-	main {
-		max-width: 1000px;
-		margin: 0 auto;
-		padding: 2rem 1rem;
-		font-family: system-ui, -apple-system, sans-serif;
+	/* 定义全局颜色变量 */
+	:global(:root) {
+		--brand-red: #8b0000;
+		--brand-gold: #c5a059;
+		--bg-color: #f7f6f2;
+		--text-dark: #333333;
+		--text-gray: #666666;
 	}
 
-	/* 首屏区域 */
-	.hero {
+	/* 整体页面背景 */
+	body {
+		background-color: var(--bg-color);
+		background-image: radial-gradient(#e6e3db 1px, transparent 1px);
+		background-size: 20px 20px; /* 增加一点点底纹，不那么单调 */
+		margin: 0;
+		padding: 0;
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	}
+
+	/* 首屏背景（深色+红金渐变） */
+	.hero-wrapper {
+		background: linear-gradient(135deg, #1a0505 0%, #3b0a0a 100%);
+		padding: 6rem 1rem;
 		text-align: center;
-		padding: 4rem 1rem;
-		background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-		border-radius: 16px;
-		margin-bottom: 4rem;
-		box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+		color: #fff;
+		position: relative;
+		overflow: hidden;
 	}
-	.hero h1 {
-		font-size: 3rem;
-		color: #8b0000; /* 经典暗红色 */
+	/* 首屏背景装饰 */
+	.hero-wrapper::after {
+		content: '';
+		position: absolute;
+		top: 0; left: 0; right: 0; bottom: 0;
+		background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+		opacity: 0.1;
+		pointer-events: none;
+	}
+	.hero-content {
+		position: relative;
+		z-index: 1;
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	.hero-content h1 {
+		font-size: 3.5rem;
+		color: var(--brand-gold);
 		margin-bottom: 1rem;
-		letter-spacing: 4px;
+		letter-spacing: 6px;
+		text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 	}
-	.hero .subtitle {
-		font-size: 1.2rem;
-		color: #666;
-		letter-spacing: 2px;
+	.hero-content .subtitle {
+		font-size: 1.3rem;
+		color: #ddd;
+		letter-spacing: 4px;
 		margin-bottom: 2rem;
 	}
-	.hero .description {
-		max-width: 700px;
-		margin: 0 auto;
+	.hero-content .divider {
+		width: 60px;
+		height: 2px;
+		background: var(--brand-gold);
+		margin: 0 auto 2rem auto;
+	}
+	.hero-content .description {
 		font-size: 1.1rem;
-		color: #444;
-		line-height: 1.8;
+		color: #ccc;
+		line-height: 2;
 	}
 
-	/* 业务区域 */
-	section {
-		margin-bottom: 4rem;
+	/* 主体内容 */
+	main {
+		max-width: 1100px;
+		margin: -3rem auto 0; /* 让内容往上浮动，盖住一点首屏 */
+		padding: 0 1rem 4rem;
+		position: relative;
+		z-index: 2;
 	}
-	section h2 {
-		font-size: 2rem;
-		color: #333;
-		border-left: 5px solid #8b0000;
-		padding-left: 15px;
-		margin-bottom: 2rem;
+
+	/* 区块通用标题 */
+	.section-header {
+		text-align: center;
+		margin-bottom: 3rem;
 	}
+	.section-header h2 {
+		font-size: 2.2rem;
+		color: var(--brand-red);
+		margin-bottom: 0.5rem;
+		letter-spacing: 2px;
+	}
+	.section-header p {
+		color: var(--brand-gold);
+		font-size: 0.9rem;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+	}
+
+	/* 业务卡片网格 */
 	.service-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-		gap: 1.5rem;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+		margin-bottom: 5rem;
 	}
 	.service-card {
 		background: #fff;
-		padding: 2rem;
+		padding: 3rem 2rem;
 		border-radius: 12px;
-		border: 1px solid #f0f0f0;
-		box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+		text-align: center;
+		transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		border-top: 4px solid var(--brand-red);
+		position: relative;
 	}
 	.service-card:hover {
-		transform: translateY(-5px);
-		box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+		transform: translateY(-10px);
+		box-shadow: 0 20px 40px rgba(139, 0, 0, 0.1);
+	}
+	.service-card .icon {
+		font-size: 3rem;
+		margin-bottom: 1.5rem;
 	}
 	.service-card h3 {
-		font-size: 1.3rem;
+		font-size: 1.5rem;
+		color: var(--text-dark);
 		margin-top: 0;
-		color: #8b0000;
 		margin-bottom: 1rem;
 	}
 	.service-card p {
-		color: #666;
-		line-height: 1.6;
+		color: var(--text-gray);
+		line-height: 1.8;
+		font-size: 0.95rem;
 		margin: 0;
 	}
 
-	/* 联系区域 */
+	/* 联系卡片 */
 	.contact-box {
 		background: #fff;
-		padding: 2rem;
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 3rem;
 		border-radius: 12px;
-		border: 1px solid #f0f0f0;
-		box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+		box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
 	}
-	.contact-box p {
-		font-size: 1.1rem;
-		color: #444;
-		margin-bottom: 1rem;
+	.contact-item {
 		display: flex;
+		flex-direction: column;
 		align-items: center;
+		text-align: center;
 	}
-	.contact-box p:last-child {
-		margin-bottom: 0;
+	.contact-item .label {
+		font-size: 0.9rem;
+		color: var(--brand-gold);
+		margin-bottom: 0.5rem;
+		font-weight: bold;
+		letter-spacing: 1px;
 	}
-	.contact-box strong {
-		color: #333;
-		min-width: 100px;
-		display: inline-block;
+	.contact-item .value {
+		font-size: 1.1rem;
+		color: var(--text-dark);
+		font-weight: 500;
+	}
+	.contact-item .value a {
+		color: var(--brand-red);
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 1.3rem;
+	}
+	.contact-item .value a:hover {
+		text-decoration: underline;
 	}
 
 	/* 移动端适配 */
-	@media (max-width: 720px) {
-		.hero {
+	@media (max-width: 768px) {
+		.hero-wrapper {
+			padding: 4rem 1rem;
+		}
+		.hero-content h1 {
+			font-size: 2.5rem;
+			letter-spacing: 3px;
+		}
+		.hero-content .description br {
+			display: none; /* 手机端隐藏换行，更紧凑 */
+		}
+		main {
+			margin-top: -2rem;
+		}
+		.contact-box {
 			padding: 2rem 1rem;
-		}
-		.hero h1 {
-			font-size: 2.2rem;
-		}
-		.hero .description {
-			font-size: 1rem;
-		}
-		section h2 {
-			font-size: 1.6rem;
+			grid-template-columns: 1fr; /* 手机端联系信息垂直排列 */
+			gap: 1.5rem;
 		}
 	}
 </style>
